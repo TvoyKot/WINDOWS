@@ -34,12 +34,12 @@ const modals = () => {
   );
   bindModal(".phone_link", ".popup", ".popup .popup_close");
 
-  function showModalByTime(selector, time) {
+  function showModalByTime(selector, time) {   
     setTimeout(() => {
       document.querySelector(selector).style.display = "block";
       document.body.style.overflow = "hidden";
     }, time);
   }
-  showModalByTime(".popup", 60000);
+  // showModalByTime(".popup", 60000);
 };
 export default modals;

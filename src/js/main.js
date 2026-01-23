@@ -1,7 +1,10 @@
 // import "./slider";
 import modals from "./modules/modals";
 import tabs from "./modules/tabs";
+import forms from "./modules/forms.js"
 addEventListener("DOMContentLoaded", () => {
+  "use strict";
+  
   modals();
   tabs(
     ".glazing_slider", 
@@ -15,4 +18,5 @@ addEventListener("DOMContentLoaded", () => {
     ".decoration_content > div > div",
     "after_click",
   );
+  forms();
 });
