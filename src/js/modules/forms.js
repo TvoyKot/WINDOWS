@@ -1,14 +1,13 @@
-const forms = () => {
+import checkNumInputs from "./checkNumInputs";
+import checkStringInputs from "./checkStringInput";
+
+const forms = (state) => {
   const form = document.querySelectorAll("form");
   const inputs = document.querySelectorAll("input");
-  const phoneInputs = document.querySelectorAll('input[name="user_phone"]');
+  const modal = document.querySelectorAll("[data-modal]");
 
-  phoneInputs.forEach((item) => {
-    item.addEventListener("input", () => {
-      item.value = item.value.replace(/\D/, "");
-    });
-  });
-
+  checkNumInputs('input[name="user_phone"]');
+  checkStringInputs('input[name="user_name"]');
   const message = {
     loading: "Загрузка...",
     success: "Спасибо! Скоро мы с вами свяжемся",
@@ -39,7 +38,19 @@ const forms = () => {
       item.appendChild(statusMessage);
 
       const formData = new FormData(item);
-
+      if (item.getAttribute("data-calc") === "end") {
+        for (let key in state) {
+          formData.append(key, state[key]);
+        }
+      }
+      modal.forEach((modal) => {
+        if (modal.classList.contains("popup_calc_end")) {
+          setTimeout(() => {
+            item.style.display = "none";
+            modal.style.display = "none";
+          }, 3000);
+        }
+      });
       postData("assets/server.php", formData)
         .then((res) => {
           console.log(res);

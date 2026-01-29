@@ -41,13 +41,6 @@ const modals = () => {
       }
     });
   }
-  // function showModalByTime(selector, time) {
-  //   setTimeout(() => {
-  //     document.querySelector(selector).style.display = "block";
-  //     document.body.style.overflow = "hidden";
-  //   }, time);
-  // }
-  // showModalByTime(".popup", 60000);
 
   bindModal(
     ".popup_engineer_btn",
