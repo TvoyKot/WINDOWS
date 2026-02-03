@@ -184,6 +184,47 @@ const forms = state => {
 
 /***/ },
 
+/***/ "./src/js/modules/images.js"
+/*!**********************************!*\
+  !*** ./src/js/modules/images.js ***!
+  \**********************************/
+(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+const images = () => {
+  const imgPopup = document.createElement("div");
+  const workSection = document.querySelector(".works");
+  const bigImage = document.createElement("img");
+  imgPopup.classList.add("popup");
+  workSection.appendChild(imgPopup);
+  imgPopup.style.justifyContent = "center";
+  imgPopup.style.alignItems = "center";
+  imgPopup.style.display = "none";
+  imgPopup.appendChild(bigImage);
+  workSection.addEventListener("click", e => {
+    e.preventDefault();
+    let target = e.target;
+    console.log(e);
+    if (target && target.classList.contains("preview")) {
+      document.body.classList.add("modal-open");
+      imgPopup.style.display = "flex";
+      const path = target.parentNode.getAttribute("href");
+      bigImage.setAttribute("src", path);
+      bigImage.style.cssText = "max-height: 100vh; max-width: 100%; padding-top: 26px";
+    }
+    if (target && target.matches("div.popup")) {
+      imgPopup.style.display = "none";
+      document.body.classList.remove("modal-open");
+    }
+  });
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (images);
+
+/***/ },
+
 /***/ "./src/js/modules/modals.js"
 /*!**********************************!*\
   !*** ./src/js/modules/modals.js ***!
@@ -418,7 +459,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _modules_forms__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modules/forms */ "./src/js/modules/forms.js");
 /* harmony import */ var _modules_changeModalState__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./modules/changeModalState */ "./src/js/modules/changeModalState.js");
 /* harmony import */ var _modules_timer__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./modules/timer */ "./src/js/modules/timer.js");
+/* harmony import */ var _modules_images__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./modules/images */ "./src/js/modules/images.js");
 // import "./slider";
+
 
 
 
@@ -436,6 +479,7 @@ addEventListener("DOMContentLoaded", () => {
   (0,_modules_tabs__WEBPACK_IMPORTED_MODULE_1__["default"])(".balcon_icons", ".balcon_icons_img", ".big_img > img", "do_image_more", "inline-block");
   (0,_modules_forms__WEBPACK_IMPORTED_MODULE_2__["default"])(modalState);
   (0,_modules_timer__WEBPACK_IMPORTED_MODULE_4__["default"])(".container1", deadline);
+  (0,_modules_images__WEBPACK_IMPORTED_MODULE_5__["default"])();
 });
 })();
 
