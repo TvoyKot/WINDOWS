@@ -44,7 +44,10 @@ const forms = (state) => {
         }
       }
       modal.forEach((modal) => {
-        if (modal.classList.contains("popup_calc_end")) {
+        if (
+          modal.classList.contains("popup_calc_end") ||
+          modal.classList.contains("popup_engineer")
+        ) {
           setTimeout(() => {
             item.style.display = "none";
             modal.style.display = "none";
