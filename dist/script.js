@@ -241,6 +241,7 @@ const modals = () => {
     const modal = document.querySelector(modalSelector);
     const close = document.querySelector(closeSelector);
     const windows = document.querySelectorAll("[data-modal]");
+    const scroll = calcScroll();
     trigger.forEach(item => {
       item.addEventListener("click", e => {
         if (e.target) {
@@ -251,6 +252,7 @@ const modals = () => {
         });
         modal.style.display = "block";
         document.body.classList.add("modal-open");
+        document.body.style.marginRight = `${scroll}px`;
       });
     });
     close.addEventListener("click", () => {
@@ -259,6 +261,7 @@ const modals = () => {
       });
       modal.style.display = "none";
       document.body.classList.remove("modal-open");
+      document.body.style.marginRight = `0px`;
     });
     modal.addEventListener("click", e => {
       if (e.target === modal && closeClickOverlay) {
@@ -267,8 +270,20 @@ const modals = () => {
         });
         modal.style.display = "none";
         document.body.classList.remove("modal-open");
+        document.body.style.marginRight = `0px`;
       }
     });
+  }
+  function calcScroll() {
+    let div = document.createElement("div");
+    div.style.width = "50px";
+    div.style.height = "50px";
+    div.style.overflowY = "scroll";
+    div.style.visibility = "hidden";
+    document.body.appendChild(div);
+    let scrollWidth = div.offsetWidth - div.clientWidth;
+    div.remove();
+    return scrollWidth;
   }
   bindModal(".popup_engineer_btn", ".popup_engineer", ".popup_engineer .popup_close");
   bindModal(".phone_link", ".popup", ".popup .popup_close");
