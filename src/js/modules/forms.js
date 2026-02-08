@@ -49,7 +49,7 @@ const forms = (state) => {
           modal.classList.contains("popup_engineer")
         ) {
           setTimeout(() => {
-            item.style.display = "none";
+            // item.style.display = "none";
             modal.style.display = "none";
           }, 3000);
         }

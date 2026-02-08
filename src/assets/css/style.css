@@ -383,7 +383,10 @@ textarea:focus {
 
 /*glazing*/
 .glazing {
-  padding: 8rem 0;
+  display: flex;
+  justify-content: center;
+  gap: 44px;
+  padding: 10px 0;
 }
 
 .glazing_block {

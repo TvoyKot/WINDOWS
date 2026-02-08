@@ -160,7 +160,7 @@ const forms = state => {
       modal.forEach(modal => {
         if (modal.classList.contains("popup_calc_end") || modal.classList.contains("popup_engineer")) {
           setTimeout(() => {
-            item.style.display = "none";
+            // item.style.display = "none";
             modal.style.display = "none";
           }, 3000);
         }
@@ -240,6 +240,7 @@ const modals = () => {
     const modal = document.querySelector(modalSelector);
     const close = document.querySelector(closeSelector);
     const windows = document.querySelectorAll("[data-modal]");
+    console.log(windows);
     const scroll = calcScroll();
     trigger.forEach(item => {
       item.addEventListener("click", e => {
@@ -247,7 +248,7 @@ const modals = () => {
           e.preventDefault();
         }
         windows.forEach(item => {
-          item.style.display = "none";
+          // item.style.display = "none";
         });
         modal.style.display = "block";
         document.body.classList.add("modal-open");
@@ -256,7 +257,12 @@ const modals = () => {
     });
     close.addEventListener("click", () => {
       windows.forEach(item => {
-        item.style.display = "none";
+        if (item.classList.contains("main_form")) {
+          item.style.display = "block";
+          console.log('test');
+        } else {
+          item.style.display = "none";
+        }
       });
       modal.style.display = "none";
       document.body.classList.remove("modal-open");
